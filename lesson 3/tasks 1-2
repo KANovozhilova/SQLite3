@@ -1,0 +1,6 @@
+ALTER TABLE streams RENAME COLUMN start_date TO started_at;
+
+///
+
+
+ALTER TABLE streams ADD COLUMN finished_at TEXT;
