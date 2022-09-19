@@ -1,0 +1,18 @@
+.schema grades
+ 
+CREATE TABLE grades_new (
+teacher_id INTEGER NOT NULL,
+stream_id INTEGER NOT NULL,
+grade REAL NOT NULL,
+PRIMARY KEY(teacher_id, stream_id),
+FOREIGN KEY (teacher_id) REFERENCES teachers(id),
+FOREIGN KEY (stream_id) REFERENCES streams(id)
+);
+ 
+INSERT INTO grades_new (teacher_id, stream_id, grade) SELECT teacher_id, stream_id, grade FROM grades;
+ 
+DROP TABLE IF EXISTS grades;
+ 
+ALTER TABLE grades_new RENAME TO grades;
+ 
+.tables
